@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Main activity -->
+    <color name="main_bgn_first">#61D8DE</color>
+    <color name="main_bgn_second">#E839F6</color>
+
+    <color name="main_btn_fgn">#FFFFFF</color>
+    <color name="main_btn_bgn">#00FFFFFF</color>
+
+
+    <!-- Calc activity -->
+    <color name="calc_bgn_first">#9c749b</color>
+    <color name="calc_bgn_second">#6a009c</color>
+
+
+    <color name="calc_btn_bgn">#6D00A1</color>
+    <color name="calc_btn_fgn">#6a009c</color>
+    <color name="calc_digit_color">#6a009c</color>
+    <color name="calc_equal_bgn">#6a009c</color>
+    <color name="calc_func_bgn">#3A002C</color>
+
+
+</resources>
