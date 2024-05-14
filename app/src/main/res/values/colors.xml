@@ -22,5 +22,7 @@
     <color name="calc_equal_bgn">#6a009c</color>
     <color name="calc_func_bgn">#3A002C</color>
 
+    <color name="calc_result_bgn_land">#56FF60FB</color>
+
 
 </resources>

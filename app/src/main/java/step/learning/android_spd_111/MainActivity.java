@@ -1,8 +1,11 @@
 package step.learning.android_spd_111;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +27,19 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         findViewById(R.id.main_btn_calc).setOnClickListener(this::onCalcButtonClick);
+        findViewById(R.id.main_btn_game).setOnClickListener(this::onGameButtonClick);
+
     }
 
     private void onCalcButtonClick(View view) {
         Intent intent = new Intent(this, CalcActivity.class);
+        startActivity(intent);
+    }
+
+    private void onGameButtonClick(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
 }

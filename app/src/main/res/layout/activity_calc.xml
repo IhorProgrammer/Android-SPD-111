@@ -21,6 +21,7 @@
         />
 
     <TextView
+        android:id="@+id/calc_tv_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -29,12 +30,13 @@
         android:text="25 x 3 =" />
 
     <TextView
+        android:id="@+id/calc_tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:textColor="@color/white"
         android:layout_gravity="right"
-        android:text="75" />
+        android:text="0" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -46,8 +48,8 @@
             android:layout_weight="1"
             >
             <Button
-                android:id="@+id/calc_btn_precent"
-                android:text="@string/calc_btn_precent"
+                android:id="@+id/calc_btn_result"
+                android:text="@string/calc_btn_result"
                 style="@style/calc_func_button"
                 />
             <Button

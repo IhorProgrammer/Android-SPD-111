@@ -2,10 +2,11 @@
     <string name="app_name">Android-SPD-111</string>
 
     <!-- Main activyty -->
+    <string name="main_title">Основи Android Studio</string>
     <string name="main_btn_calc">Калькулятор</string>
-    <string name="main_text_title">Основи Android Studio</string>
+    <string name="main_btn_game">Свайпи. Гра</string>
 
-    <!-- Calc activyty -->
+    <!-- region Calc activity -->
     <string name="calc_text_title">Calculator</string>
     <string name="calc_btn_precent">%</string>
     <string name="calc_btn_ce">CE</string>
@@ -25,9 +26,20 @@
     <string name="calc_btn_plus">+</string>
     <string name="calc_btn_minus">-</string>
     <string name="calc_btn_division">÷</string>
+    <string name="calc_btn_result">=</string>
+    <string name="calc_btn_sqrt">\u221Ax</string>
+    <string name="calc_btn_power">x\u00B2</string>
+    <string name="calc_btn_inverse">\u00B9/\u2093</string>
+
     <string name="calc_btn_multiplication">×</string>
     <string name="calc_btn_separation">,</string>
     <string name="calc_btn_plus_minus">\u00B1</string>
+    <string name="calc_limit_exceeded">Limit exceeded</string>
+    <string name="calc_zero_division">Division by zero</string>
+    <!--endregion -->
 
+    <!-- region Game activity -->
+    <string name="game_btn_game">Основи Android Studio</string>
 
+    <!-- endregion -->
 </resources>

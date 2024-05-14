@@ -14,7 +14,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_text_title"
+        android:text="@string/main_title"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="20pt"
@@ -38,4 +38,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <Button
+        android:id="@+id/main_btn_game"
+        android:layout_width="291dp"
+        android:layout_height="86dp"
+        android:background="@color/main_btn_bgn"
+        android:text="@string/main_btn_game"
+        android:textColor="@color/main_btn_fgn"
+        android:textSize="30dp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_btn_calc"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
