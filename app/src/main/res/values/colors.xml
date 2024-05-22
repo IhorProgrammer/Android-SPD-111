@@ -24,5 +24,9 @@
 
     <color name="calc_result_bgn_land">#56FF60FB</color>
 
+    <!-- Game activity -->
+    <color name="game_field">#FF88FF88</color>
+    <color name="game_shake">#FF118811</color>
+
 
 </resources>
