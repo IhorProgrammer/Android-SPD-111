@@ -5,6 +5,7 @@
     <string name="main_title">Основи Android Studio</string>
     <string name="main_btn_calc">Калькулятор</string>
     <string name="main_btn_game">Свайпи. Гра</string>
+    <string name="main_btn_chat">Мережа. Чат</string>
 
     <!-- region Calc activity -->
     <string name="calc_text_title">Calculator</string>
@@ -40,6 +41,10 @@
 
     <!-- region Game activity -->
     <string name="game_btn_game">Основи Android Studio</string>
+    <!-- endregion -->
 
+
+    <!-- region Chat activity -->
+    <string name="chat_scroller_description">Chat Messages</string>
     <!-- endregion -->
 </resources>

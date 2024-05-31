@@ -28,5 +28,8 @@
     <color name="game_field">#FF88FF88</color>
     <color name="game_shake">#FF118811</color>
 
+    <!-- Chat activity -->
+    <color name="chat_msg_my">#BFB0FF</color>
+    <color name="chat_msg_other">#FFC107</color>
 
 </resources>
