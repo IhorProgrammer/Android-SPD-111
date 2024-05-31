@@ -30,7 +30,7 @@
             android:id="@+id/chat_et_nick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Ihor"
+            android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/chat_iv_logo"
             app:layout_constraintStart_toEndOf="@+id/chat_tv_title"
@@ -67,40 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:background="@drawable/chat_msg_my"-->
-<!--                android:text="Hello"-->
-<!--                android:paddingTop="5dp"-->
-<!--                android:paddingBottom="5dp"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingRight="15dp"-->
-<!--                android:layout_gravity="start"></TextView>-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:background="@drawable/chat_msg_my"-->
-<!--                android:text="Hello"-->
-<!--                android:paddingTop="5dp"-->
-<!--                android:paddingBottom="5dp"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingRight="15dp"-->
-<!--                android:layout_gravity="start"></TextView>-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:background="@drawable/chat_msg_my"-->
-<!--                android:text="Hello"-->
-<!--                android:paddingTop="5dp"-->
-<!--                android:paddingBottom="5dp"-->
-<!--                android:paddingLeft="15dp"-->
-<!--                android:paddingRight="15dp"-->
-<!--                android:layout_gravity="end"></TextView>-->
-
         </LinearLayout>
     </ScrollView>
 

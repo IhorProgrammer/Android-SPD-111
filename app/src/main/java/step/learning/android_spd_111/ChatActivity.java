@@ -44,6 +44,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import step.learning.android_spd_111.orm.ChatMessage;
 import step.learning.android_spd_111.orm.ChatResponse;
@@ -55,6 +56,9 @@ public class ChatActivity extends AppCompatActivity {
 
     private EditText etNik;
     private EditText etMessage;
+
+    private String userNik = null;
+
     private final List<ChatMessage> chatMessages = new ArrayList<>();
 
     private ScrollView chatScroller;
@@ -63,6 +67,7 @@ public class ChatActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
 
     private MediaPlayer newMessageSound;
+    private final AtomicBoolean isUpdating = new AtomicBoolean(false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +181,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private boolean processChatResponse ( String response ) {
         boolean wasNewMessage = false;
+        boolean isMyNewMessage = false;
         boolean isFirstProcess = this.chatMessages.isEmpty();
         try {
             ChatResponse chatResponse = ChatResponse.fromJsonString( response );
@@ -185,18 +191,21 @@ public class ChatActivity extends AppCompatActivity {
                     // немає жодного повідомлення з таким id, як у message -- це нове повідомлення
                     this.chatMessages.add( message ) ;
                     wasNewMessage = true;
+                    if( wasNewMessage ) {
+                        if( message.getAuthor().equals(userNik) ) {
+                            isMyNewMessage = true;
+                        }
+                    }
                 }
             }
             if( isFirstProcess ) {
                 this.chatMessages.sort( Comparator.comparing( ChatMessage::getMoment ) );
-            } else if ( wasNewMessage ) {
+            } else if ( wasNewMessage && isMyNewMessage ) {
                 newMessageSound.start();
             }
 
         } catch (IllegalAccessException ex) {
-            Log.e( "ChatActivity:processResponse",
-                    ex.getMessage() == null ?  ex.getClass().getName() : ex.getMessage());
-
+            Log.e( "ChatActivity:processResponse", ex.getMessage() == null ?  ex.getClass().getName() : ex.getMessage());
         }
         return wasNewMessage;
     }
@@ -255,12 +264,20 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void onSendClick( View v ){
-        String author = etNik.getText().toString();
-        String message = etMessage.getText().toString();
-        if( author.isEmpty() ) {
-            Toast.makeText(  this, "Заповніть 'Нік'", Toast.LENGTH_SHORT).show();
-            return;
+        String author = userNik;
+        if( author == null ) {
+            author = etNik.getText().toString();
+            if( author.isEmpty() ) {
+                Toast.makeText(  this, "Заповніть 'Нік'", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            userNik = author;
+            etNik.setEnabled( false );
+            chatMessages.clear();
+            startUpdating();
         }
+
+        String message = etMessage.getText().toString();
         if( message.isEmpty() ) {
             Toast.makeText(  this, "Введіть повідомлення", Toast.LENGTH_SHORT).show();
             return;
@@ -269,8 +286,11 @@ public class ChatActivity extends AppCompatActivity {
         chatMessage.setAuthor( author );
         chatMessage.setText( message );
 
+        etMessage.setText("");
+
         CompletableFuture
-                .runAsync( () -> sendChatMessage( chatMessage ), executorService );
+                .runAsync( () -> sendChatMessage( chatMessage ), executorService )
+                ;
 
 
     }
@@ -318,8 +338,8 @@ public class ChatActivity extends AppCompatActivity {
             if ( statusCode == 201 ) {
                 // якщо потрібне тіло відповіді, то воно у потоці .getInputStream
                 // оновлення чату
-                updateChat();
 
+                startUpdating();
             }
             else {
                 // при помилці тіло таке ж, воно вилучається через .getErrorStream
@@ -338,7 +358,18 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
+
+    private void startUpdating() {
+        handler.post(this::updateChat);
+    }
+
     private void updateChat() {
+        // Якщо оновлення вже виконується, перериваємо його
+        if (!isUpdating.compareAndSet(false, true)) {
+            isUpdating.set(false);
+            return;
+        }
+
         if( executorService.isShutdown() ) return;
         CompletableFuture
                 .supplyAsync( this::loadChat, executorService )
