@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
     private GameShake gameShake;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class GameActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
 
         int fieldColor = getResources().getColor(R.color.game_field, getTheme());
         int shakeColor = getResources().getColor(R.color.game_shake, getTheme());

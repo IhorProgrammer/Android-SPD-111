@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,7 @@ public class GameShake {
     private final GameShakeFood gameShakeFood;
 
     AppCompatActivity activity;
+    private Animation opacityAnimation;
 
     private GameActivityEnum gameActivityEnum = GameActivityEnum.stop;
 
@@ -55,7 +58,10 @@ public class GameShake {
         gameShakeFood = new GameShakeFood();
         gameShakeField.initField( field, activity );
         this.activity = activity;
+        opacityAnimation = AnimationUtils.loadAnimation (this.activity, R.anim.opacity);
+
         start();
+
     }
 
     private void changeFoodPosition() {
@@ -66,7 +72,10 @@ public class GameShake {
             foodPositionTemp = gameShakeFood.changeFoodPosition( GameShakeField.FIELD_WIDTH, GameShakeField.FIELD_HEIGHT );
         } while (gameShakeShake.contains( foodPositionTemp ) );
 
+
         gameShakeField.getGameField(foodPositionTemp.x, foodPositionTemp.y).setText( GameShakeFood.food );
+        gameShakeField.getGameField(foodPositionTemp.x, foodPositionTemp.y).startAnimation( opacityAnimation );
+
     }
 
     private void newGame() {
